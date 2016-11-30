@@ -14,3 +14,13 @@ body {
     text-align: center;
     font-size: 150%;
 }
+
+#vehicle{
+    text-align: center;
+    font-size: 150%;
+}
+
+form{
+    display:inline-block;
+    position: relative;
+}

@@ -1,24 +1,3 @@
-// url = "https://swapi.co/api/people/?search="
-// document.getElementById("frm1").submit()
-//
-// function showPerson(){
-//     var name = document.getElementById("search_name").value
-//     $.ajax({
-//         url: url
-//     }).done(function(results) {
-//         var name = results.name
-//         var height = results.height
-//         var hair_color = results.hair_color
-//         var skin_color = results.skin_color
-//         var eye_color = results.eye_color
-//         var birth_year = results.birth_year
-//         var homeworld = results.homeworld
-//         console.log(results)
-//         var text = ("name: " + name + "<br>" + "height: " + height + "<br>" + "eye color: " + eye_color + "<br>" +
-//                     "hair color: " + hair_color + "<br>" + "homeworld: " + homeworld)
-//         $("#person").html(text)
-//     })
-// }
 
 function showPerson(frm1){
     var $stuff = $("<li>")
@@ -42,6 +21,36 @@ function showPerson(frm1){
         })
 }
 
+function oneVehicle(frm2){
+    var $stuff = $("<li>")
+    console.log(this)
+    j = document.getElementById("frm2").value
+    var pr = $.ajax("https://swapi.co/api/vehicles/?search=" + j).done(function(results) {
+        console.log(results)
+        console.log(results.results[0])
+        rr = results.results[0]
+        var name = results.results[0].name
+        var model = rr.model
+        var manufacturer = rr.manufacturer
+        var cost_in_credits = rr.cost_in_credits
+        var length = rr.length
+        var max_atmosphering_speed = rr.max_atmosphering_speed
+        var crew = rr.crew
+        var passengers = rr.passengers
+        var cargo_capacity = rr.cargo_capacity
+        var consumables = rr.consumables
+        var vehicle_class = rr.vehicle_class
+        var pilots = rr.pilots
+        console.log(results)
+        var text = ("name: " + name + "<br>" + "model: " + model + "<br>" + "manufacturer: "
+                    + manufacturer + "<br>" + "Credit cost: " + cost_in_credits + "<br>"
+                    + "length: " + length + "<br>" + "max atmosphere speed: " + max_atmosphering_speed
+                    + "<br>" + "crew: " + crew + "<br>" + "passengers: " + passengers + "<br>"
+                    + "cargo capacity: " + cargo_capacity + "<br>" + "consumables: " + consumables + "<br>"
+                    + "vehicle class: " + vehicle_class + "<br>" + "pilots: " + pilots + "<br>")
+        $("#vehicle").html(text)
+        })
+}
 
 
 function showPeople(){
@@ -134,15 +143,12 @@ function showFilms(){
 }
 
 
-function pageClear(){
-    document.body.innerHTML = " ";
-}
 
 $("#personbutton").click(showPerson)
 $("#peopleButton").click(showPeople)
 $("#planetButton").click(showPlanets)
 $("#vehicleButton").click(showVehicles)
 $("#starshipButton").click(showStarships)
-$("#clearButton").click(pageClear)
 $("#speciesButton").click(showSpecies)
 $("#filmButton").click(showFilms)
+$("#oneVehicleButton").click(oneVehicle)
