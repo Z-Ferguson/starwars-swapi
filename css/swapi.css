@@ -1,3 +1,16 @@
+
+
 body {
     background-color: grey;
+}
+
+
+.panel-heading{
+    background-color: black;
+    text-align: center;
+}
+
+#person{
+    text-align: center;
+    font-size: 150%;
 }
