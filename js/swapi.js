@@ -4,19 +4,30 @@ function showPerson(frm1){
     console.log(this)
     j = document.getElementById("frm1").value
     var pr = $.ajax("https://swapi.co/api/people/?search=" + j).done(function(results) {
-        console.log(results)
-        console.log(results.results[0])
-        rr = results.results[0]
+        // console.log(results)
+        // console.log(results.results[0])
+        var rr = results.results[0]
+        // var h_id = homeworldbyId(rr[1]['homeworld'])
         var name = results.results[0].name
         var height = rr.height
+        var mass = rr.mass
         var hair_color = rr.hair_color
         var skin_color = rr.skin_color
         var eye_color = rr.eye_color
         var birth_year = rr.birth_year
+        // console.log(results.homeworldbyId)
         var homeworld = rr.homeworld
+        var films = rr.films
+        var species = rr.species
+        var vehicles = rr.vehicles
+        var starships = rr.starships
         console.log(results)
-        var text = ("name: " + name + "<br>" + "height: " + height + "<br>" + "eye color: " + eye_color + "<br>" +
-                    "hair color: " + hair_color + "<br>" + "homeworld: " + homeworld)
+        var text = ("name: " + name + "<br>" + "height: " + height + "<br>" + "mass: "
+                    + mass + "<br>" + "hair color: " + hair_color + "<br>" + "skin color: " + skin_color
+                    + "<br>" + "eye color: " + eye_color + "<br>" + "birth year: " + birth_year
+                    + "<br>" +  "Homeworld: <span id='homeworld'></span><br>" +  "<br>" + "films: " + films + "<br>"
+                    + "species: " + species + "<br>" + "vehicles: " + vehicles + "<br>"
+                    + "starships: " + starships)
         $("#person").html(text)
         })
 }
@@ -53,6 +64,30 @@ function oneVehicle(frm2){
 }
 
 
+function oneFilm(frm3){
+    var $stuff = $("<li>")
+    j = document.getElementById("frm3").value
+    var pr = $.ajax("https://swapi.co/api/films/?search=" + j).done(function(results){
+        rr = results.results[0]
+        var title = rr.title
+        var episode_id = rr.episode_id
+        var director = rr.director
+        var producer = rr.producer
+        var release_date = rr.release_date
+        var characters = rr.characters
+        var planets = rr.planets
+        var starships = rr.starships
+        var vehicles = rr.vehicles
+        var species = rr.species
+        var text = ("title: " + title + "<br>" + "episode number: " + episode_id + "<br>"
+                    + "director: " + director + "<br>" + "producer: " + producer + "<br>"
+                    + "release date: " + release_date + "<br>" + "characters: " + characters + "<br>"
+                    + "planets: " + planets + "<br>" + "starships: " + starships + "<br>"
+                    + "vehicles: " + vehicles + "<br>" + "species: " + species)
+        $("#film").html(text)
+        })
+}
+
 function showPeople(){
     var $stuff = $("<li>")
     var peopleList = []
@@ -67,7 +102,6 @@ function showPeople(){
         })
     }
 }
-
 
 function showPlanets(){
     var $stuff = $("<li>")
@@ -107,7 +141,6 @@ function showStarships(){
         for(var i = 0; i < starshipStuff.length; i++){
             console.log(starshipStuff[i]["name"])
             $stuff.html($stuff.html()+ starshipStuff[i]["name"] + "<br>")
-            // peopleList.push(peopleStuff[i])
             $("#xstarship").append($stuff)}
         })
     }
@@ -122,7 +155,6 @@ function showSpecies(){
         for(var i = 0; i < speciesStuff.length; i++){
             console.log(speciesStuff[i]["name"])
             $stuff.html($stuff.html()+ speciesStuff[i]["name"] + "<br>")
-            // peopleList.push(peopleStuff[i])
             $("#xspecies").append($stuff)}
         })
     }
@@ -142,7 +174,28 @@ function showFilms(){
     }
 }
 
+function homeworldbyId(url){
+    var address = url
+    jQuery.ajax(address).done(function(results){
+        $('#homeworld').html(results['name'])
+    })
+}
 
+function speciesbyId(url){
+    var address = url[0]
+    jQuery.ajax(address).done(function(results){
+        $('#species').html(results['name'])
+    })
+}
+
+function filmsbyId(list_urls){
+    var list_films = list_urls
+    for(var i=0; i<list_films.length; i++){
+    jQuery.ajax(list_films[i]).done(function(results){
+        $('#films').html($('#films').html() + '<br>' + results['title'] )
+    })
+}
+}
 
 $("#personbutton").click(showPerson)
 $("#peopleButton").click(showPeople)
@@ -152,3 +205,4 @@ $("#starshipButton").click(showStarships)
 $("#speciesButton").click(showSpecies)
 $("#filmButton").click(showFilms)
 $("#oneVehicleButton").click(oneVehicle)
+$("#oneFilmButton").click(oneFilm)

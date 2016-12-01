@@ -20,6 +20,11 @@ body {
     font-size: 150%;
 }
 
+#film{
+    text-align: center;
+    font-size: 150%;
+}
+
 form{
     display:inline-block;
     position: relative;
