@@ -1,88 +1,70 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <title></title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/swapi.css">
-
-</head>
-
-<body>
-
-    <div class="container">
-              <div class="row">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/swapi.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
                 <div class="col-sm-4">
                     <div class="panel panel-primary">
                         <div class="panel-heading" id="peopleButton"> People</div>
                         <!-- <button id="peopleButton">people</button> -->
-                    <!-- <div class="panel-footer"></div> -->
-                  </div>
+                        <!-- <div class="panel-footer"></div> -->
+                    </div>
                 </div>
-    <div class="col-sm-4">
-                  <div class="panel panel-primary">
-                    <div class="panel-heading" id="filmButton">FILMS</div>
-                    <!-- <button id="filmButton">Films</button> -->
-                    <!-- <div class="panel-footer"></div> -->
-                  </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" id="filmButton">FILMS</div>
+                        <!-- <button id="filmButton">Films</button> -->
+                        <!-- <div class="panel-footer"></div> -->
+                    </div>
                 </div>
-    <div class="col-sm-4">
-                  <div class="panel panel-primary">
-                    <div class="panel-heading" id="vehicleButton">VEHICLES</div>
-                    <!-- <button id="vehicleButton">Vehicle</button>
-                    <div class="panel-footer"></div> -->
-                  </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" id="vehicleButton">VEHICLES</div>
+                        <!-- <button id="vehicleButton">Vehicle</button>
+                            <div class="panel-footer"></div> -->
+                    </div>
                 </div>
-              </div>
             </div>
-<br><br><br>
-
-<div class="col-sm-12">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3>Search for something within the universe:</h3>
-
         </div>
-        <div class="panel-body">
-
-            <form>
-                <input type="text" id="frm1" name="showPerson">
-                <br>
-                <input type="button" id="personbutton" value="Search by name">
-            </form>
-
-            <form>
-                <input type="text" id="frm2" name="oneVehicle">
-                <br>
-                <input type="button" id="oneVehicleButton" value="Search by Vehicle">
-            </form>
-
-            <form>
-                <input type="text" id="frm3" name="oneFilm">
-                <br>
-                <input type="button" id="oneFilmButton" value="Search by Film">
-            </form>
-
-
+        <br><br><br>
+        <div class="col-sm-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3>Search for something within the universe:</h3>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <input type="text" id="frm1" name="showPerson">
+                        <br>
+                        <input type="button" id="personbutton" value="Search by name">
+                    </form>
+                    <form>
+                        <input type="text" id="frm2" name="oneVehicle">
+                        <br>
+                        <input type="button" id="oneVehicleButton" value="Search by Vehicle">
+                    </form>
+                    <form>
+                        <input type="text" id="frm3" name="oneFilm">
+                        <br>
+                        <input type="button" id="oneFilmButton" value="Search by Film">
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
         <div class="swsinfo">
             <div id="singleInfo"></div>
         </div>
-
-       <div class="swinfo">
-           <div id="xinfo"></div>
-       </div>
-
-
-
+        <div class="swinfo">
+            <div id="xinfo"></div>
+        </div>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/swapi.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-</body>
-
+    </body>
 </html>
