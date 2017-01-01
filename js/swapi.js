@@ -3,33 +3,27 @@ function showPerson(frm1){
     clearSingle()
     var $stuff = $("<ol class='ol'>")
     j = document.getElementById("frm1").value
-    var pr = $.ajax("https://swapi.co/api/people/?search=" + j).done(function(results) {
-        var rr = results.results
-        console.log(rr[0]['name'])
-        console.log(rr[1]['name'])
-        console.log(rr[2]['name'])
-        for(var i = 0; i < rr.length; i++){
-            if(j==rr[i]['name']){
+    $.ajax("https://swapi.co/api/people/?search=" + j).done(function(results) {
+        var rr = results.results[0]
+        console.log(results.results[0]['name'])
         homeworldByUrl(rr['homeworld'])
         speciesbyUrl(rr['species'])
         filmsbyUrl(rr['films'])
         vehiclesbyUrl(rr['vehicles'])
         starshipsbyUrl(rr['starships'])
-        $stuff.html("Name: " + rr['name'] + "<br>" +
-                    "Skin Color: " + rr['skin_color'] + "<br>" +
-                    "Hair Color: " + rr['hair_color'] + "<br>" +
-                    "Eye Color: " + rr['eye_color'] + "<br>" +
-                    "Birth Year: " + rr['birth_year'] + "<br>" +
-                    "Gender: " + rr['gender'] + "<br>" +
-                    "Homeworld: <span id='homeworld'></span><br>" +
-                    "Films: <li class='tab' id='films'></li><br>" +
-                    "Vehicles: <li class='tab' id='vehicles'></li><br>" +
-                    "Starships: <li class='tab' id='starships'></li><br>" +
-                    "Species: <span id='species'></span>")
-                    $("#singleInfo").append($stuff)
-                }
-            }
-})
+    $stuff.html("Name: " + rr['name'] + "<br>" +
+                "Skin Color: " + rr['skin_color'] + "<br>" +
+                "Hair Color: " + rr['hair_color'] + "<br>" +
+                "Eye Color: " + rr['eye_color'] + "<br>" +
+                "Birth Year: " + rr['birth_year'] + "<br>" +
+                "Gender: " + rr['gender'] + "<br>" +
+                "Homeworld: <span id='homeworld'></span><br>" +
+                "Films: <ol class='tab' id='films'></ol><br>" +
+                "Vehicles: <ol class='tab' id='vehicles'></ol><br>" +
+                "Starships: <ol class='tab' id='starships'></ol><br>" +
+                "Species: <span id='species'></span>")
+                $("#singleInfo").append($stuff)
+            })
 }
 
 
@@ -37,7 +31,7 @@ function oneVehicle(frm2){
     clearSingle()
     var $stuff = $("<ol class='ol'>")
     j = document.getElementById("frm2").value
-    var pr = $.ajax("https://swapi.co/api/vehicles/?search=" + j).done(function(results) {
+    $.ajax("https://swapi.co/api/vehicles/?search=" + j).done(function(results) {
         rr = results.results[0]
         pilotsbyUrl(rr['pilots'])
         console.log(results.results[0]['name'])
@@ -128,7 +122,7 @@ function homeworldByUrl(url){
 }
 
 function speciesbyUrl(url){
-    $.ajax(url).done(function(results){
+    $.ajax(url[0]).done(function(results){
         $('#species').html(results['name'])
     })
 }
