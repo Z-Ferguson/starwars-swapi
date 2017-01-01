@@ -1,13 +1,12 @@
 
 function showPerson(frm1){
     var $stuff = $("<li>")
-    console.log(this)
     j = document.getElementById("frm1").value
     var pr = $.ajax("https://swapi.co/api/people/?search=" + j).done(function(results) {
-        // console.log(results)
-        // console.log(results.results[0])
         var rr = results.results[0]
-        // var h_id = homeworldbyId(rr[1]['homeworld'])
+        for(var i = 0; i < rr.length; i++){
+            if(j==rr[i]['frm1']){
+        homeworldByUrl(rr['homeworld'])
         var name = results.results[0].name
         var height = rr.height
         var mass = rr.mass
@@ -15,22 +14,29 @@ function showPerson(frm1){
         var skin_color = rr.skin_color
         var eye_color = rr.eye_color
         var birth_year = rr.birth_year
-        // console.log(results.homeworldbyId)
         var homeworld = rr.homeworld
         var films = rr.films
         var species = rr.species
         var vehicles = rr.vehicles
         var starships = rr.starships
-        console.log(results)
         var text = ("name: " + name + "<br>" + "height: " + height + "<br>" + "mass: "
                     + mass + "<br>" + "hair color: " + hair_color + "<br>" + "skin color: " + skin_color
                     + "<br>" + "eye color: " + eye_color + "<br>" + "birth year: " + birth_year
                     + "<br>" +  "Homeworld: <span id='homeworld'></span><br>" +  "<br>" + "films: " + films + "<br>"
-                    + "species: " + species + "<br>" + "vehicles: " + vehicles + "<br>"
+                    + "Species: <span id='species'></span><br>" + "<br>" + "vehicles: " + vehicles + "<br>"
                     + "starships: " + starships)
-        $("#person").html(text)
-        })
+        $("#singleInfo").html(text)
+    }
 }
+})
+    }
+
+
+
+
+
+
+
 
 function oneVehicle(frm2){
     var $stuff = $("<li>")
@@ -59,7 +65,7 @@ function oneVehicle(frm2){
                     + "<br>" + "crew: " + crew + "<br>" + "passengers: " + passengers + "<br>"
                     + "cargo capacity: " + cargo_capacity + "<br>" + "consumables: " + consumables + "<br>"
                     + "vehicle class: " + vehicle_class + "<br>" + "pilots: " + pilots + "<br>")
-        $("#vehicle").html(text)
+        $("#singleInfo").html(text)
         })
 }
 
@@ -84,12 +90,12 @@ function oneFilm(frm3){
                     + "release date: " + release_date + "<br>" + "characters: " + characters + "<br>"
                     + "planets: " + planets + "<br>" + "starships: " + starships + "<br>"
                     + "vehicles: " + vehicles + "<br>" + "species: " + species)
-        $("#film").html(text)
+        $("#singleInfo").html(text)
         })
 }
 
 function showPeople(){
-    var $stuff = $("<li>")
+    var $stuff = $("<p>")
     var peopleList = []
     for(var j = 1; j < 10; j++){
     var pr = $.ajax("http://swapi.co/api/people?page=" + j).done(function(results) {
@@ -97,14 +103,13 @@ function showPeople(){
         for(var i = 0; i < peopleStuff.length; i++){
             console.log(peopleStuff[i]["name"])
             $stuff.html($stuff.html()+ peopleStuff[i]["name"] + "<br>")
-            // peopleList.push(peopleStuff[i])
-            $("#xpeople").append($stuff)}
+            $("#xinfo").append($stuff)}
         })
     }
 }
 
 function showPlanets(){
-    var $stuff = $("<li>")
+    var $stuff = $("<p>")
     var planetList = []
     for(var j = 1; j < 8; j++){
     var pl = $.ajax("http://swapi.co/api/planets?page=" + j).done(function(results) {
@@ -112,13 +117,13 @@ function showPlanets(){
         for(var i = 0; i < planetStuff.length; i++){
             console.log(planetStuff[i]["name"])
             $stuff.html($stuff.html()+ planetStuff[i]["name"] + "<br>")
-            $("#xplanet").append($stuff)}
+            $("#xinfo").append($stuff)}
         })
     }
 }
 
 function showVehicles(){
-    var $stuff = $("<li>")
+    var $stuff = $("<p>")
     var vehicleList = []
     for(var j = 1; j < 5; j++){
     var vl = $.ajax("http://swapi.co/api/vehicles?page=" + j).done(function(results) {
@@ -126,14 +131,13 @@ function showVehicles(){
         for(var i = 0; i < vehicleStuff.length; i++){
             console.log(vehicleStuff[i]["name"])
             $stuff.html($stuff.html()+ vehicleStuff[i]["name"] + "<br>")
-            // peopleList.push(peopleStuff[i])
-            $("#xvehicle").append($stuff)}
+            $("#xinfo").append($stuff)}
         })
     }
 }
 
 function showStarships(){
-    var $stuff = $("<li>")
+    var $stuff = $("<p>")
     var starshipList = []
     for(var j = 1; j < 5; j++){
     var vl = $.ajax("http://swapi.co/api/starships?page=" + j).done(function(results) {
@@ -147,7 +151,7 @@ function showStarships(){
 }
 
 function showSpecies(){
-    var $stuff = $("<li>")
+    var $stuff = $("<p>")
     var speciesList = []
     for(var j = 1; j < 5; j++){
     var sl = $.ajax("http://swapi.co/api/species?page=" + j).done(function(results) {
@@ -161,7 +165,7 @@ function showSpecies(){
 }
 
 function showFilms(){
-    var $stuff = $("<li>")
+    var $stuff = $("<p>")
     var filmList = []
     for(var j = 1; j <= 1; j++){
     var sl = $.ajax("http://swapi.co/api/films?page=" + j).done(function(results) {
@@ -169,32 +173,32 @@ function showFilms(){
         for(var i = 0; i < filmStuff.length; i++){
             console.log(filmStuff[i]["title"])
             $stuff.html($stuff.html()+ filmStuff[i]["title"] + "<br>")
-            $("#xfilms").append($stuff)}
+            $("#xinfo").append($stuff)}
         })
     }
 }
 
-function homeworldbyId(url){
-    var address = url
-    jQuery.ajax(address).done(function(results){
+function homeworldByUrl(url){
+    $.ajax(url).done(function(results){
         $('#homeworld').html(results['name'])
-    })
+            })
 }
 
-function speciesbyId(url){
-    var address = url[0]
-    jQuery.ajax(address).done(function(results){
+function speciesbyUrl(url){
+    $.ajax(url[0]).done(function(results){
         $('#species').html(results['name'])
     })
 }
 
-function filmsbyId(list_urls){
-    var list_films = list_urls
-    for(var i=0; i<list_films.length; i++){
-    jQuery.ajax(list_films[i]).done(function(results){
-        $('#films').html($('#films').html() + '<br>' + results['title'] )
-    })
-}
+// films
+// homeworlds
+// vehicles
+// Starships
+
+
+
+function clearFunction(){
+    document.getElementById("xinfo").innerHTML = ""
 }
 
 $("#personbutton").click(showPerson)
@@ -206,3 +210,4 @@ $("#speciesButton").click(showSpecies)
 $("#filmButton").click(showFilms)
 $("#oneVehicleButton").click(oneVehicle)
 $("#oneFilmButton").click(oneFilm)
+$("#clearButton").click(clearFunction)

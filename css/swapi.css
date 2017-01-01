@@ -1,7 +1,21 @@
 
 
 body {
-    background-color: grey;
+    background-image: url('http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/star-wars-wallpaper-21.jpg');
+    background-size:cover;
+}
+
+/*.panel{
+    width:90%;
+    margin: auto;
+}*/
+
+#footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
 }
 
 
@@ -13,19 +27,88 @@ body {
 #person{
     text-align: center;
     font-size: 150%;
+    color: white;
 }
 
 #vehicle{
     text-align: center;
     font-size: 150%;
+    color: white;
+
 }
 
 #film{
     text-align: center;
     font-size: 150%;
+    color: white;
+
+}
+
+#singleInfo{
+
+    font-size: 150%;
+    color: white;
+    word-wrap: break-word;
+
 }
 
 form{
-    display:inline-block;
+    margin:0 auto;
+    display: inline-block;
     position: relative;
+    vertical-align: middle;
+    text-align:center
+
+}
+
+.panel-body{
+    display: flex;
+    align-items: center;
+}
+.swinfo {
+    -webkit-column-count: 4; /* Chrome, Safari, Opera */
+    -moz-column-count: 4; /* Firefox */
+    column-count: 4;
+    -webkit-column-width: 100px; /* Chrome, Safari, Opera */
+    -moz-column-width: 100px; /* Firefox */
+    column-width: 100px;
+    font-weight: bold;
+    color: white;
+    width: 50%;
+    float: left;
+
+
+}
+
+.swsinfo{
+    width: 50%;
+    float: left;
+}
+
+#xinfo {
+    color: white;
+    /*width: 400px;*/
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+
+td{
+    padding-right: 590px;
+
+}
+
+
+
+.menu {
+    width: 50%;
+    float: left;
+    padding: 15px;
+    border: 1px solid red;
+}
+.main {
+    width: 50%;
+    float: left;
+    padding: 15px;
+    border: 1px solid red;
 }
